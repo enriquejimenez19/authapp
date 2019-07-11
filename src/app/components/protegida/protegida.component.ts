@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-protegida',
@@ -7,9 +8,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProtegidaComponent implements OnInit {
 
-  constructor() { }
+  profile: any;
+
+  constructor(private authService: AuthService) {}
 
   ngOnInit() {
+    this.authService.profile.subscribe(profile => (this.profile = profile));
   }
 
 }
